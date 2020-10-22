@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  USER_LOADED,
+  GET_TOKEN,
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
@@ -8,7 +8,27 @@ import {
   CLEAR_PROFILE,
 } from './types';
 import { setAlert } from './alert';
-import getToken from '../utils/getToken';
+import setAuthToken from '../utils/setAuthToken';
+
+// get token
+export const getToken = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/user/getToken');
+
+    if (res.data && res.data.token) {
+      setAuthToken(res.data.token);
+    }
+
+    dispatch({
+      type: GET_TOKEN,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: AUTH_ERROR,
+    });
+  }
+}
 
 // Login User
 export const login = (username, password) => async (dispatch) => {
@@ -19,15 +39,13 @@ export const login = (username, password) => async (dispatch) => {
     password: password
   }).toString();
 
-  let token = getToken();
-  console.log('token',token)
-
   const config = {
     headers: {
-      'Content-Type': 'application/json',
-      Authorization: token
+      'token': localStorage.getItem('token')
     }
   }
+
+  dispatch(getToken());
 
   try {
     const res = await axios.post(`/api/user/login?${params}`, body, config);
@@ -36,7 +54,6 @@ export const login = (username, password) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data,
     });
-
   } catch (err) {
     console.log(err);
     const errors = err.response.data.errors;
