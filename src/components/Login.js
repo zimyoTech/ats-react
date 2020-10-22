@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../actions/auth';
+import  Logo from '../assets/images/logo-dark.png';
+import  Ats from '../assets/images/ats.png';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -26,33 +28,43 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
-      <h1 className='large text-primary'>Sign In</h1>
-      <p className='lead'>
-        <i className='fas fa-user'></i> Sign Into Your Account
-      </p>
-      <form className='form' onSubmit={(e) => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Username'
-            name='username'
+    <Fragment className="body">
+      <div className="top"><img src={Logo} /></div>
+      <div className="main">
+      <div className="fblank"></div>
+      <div className="first"><img src={Ats} /></div>
+      <div className="blank"></div>
+      <div className="second">
+        <h1>Welcome to Zimyo Recruit!</h1>
+        <form onSubmit={(e) => onSubmit(e)}>
+          <input id="in1"
+            type="text"
+            placeholder="Username"
             value={username}
             onChange={(e) => onChange(e)}
             required
           />
-        </div>
-        <div className='form-group'>
-          <input
-            type='password'
-            placeholder='Password'
-            name='password'
+        <br />
+        <br />
+          <input id="in2"
+            type="password"
+            placeholder="password"
             value={password}
             onChange={(e) => onChange(e)}
           />
-        </div>
-        <input type='submit' className='btn btn-primary' value='Login' />
-      </form>
+        <br />
+          <br />
+          <button id="login">
+            LOGIN
+          </button>
+          <br />
+          <br />
+          <button id="demo">
+            DEMO
+          </button>
+        </form>
+      </div>
+      </div>
     </Fragment>
   );
 };

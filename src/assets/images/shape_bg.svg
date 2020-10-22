@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552.115 178">
+    <defs>
+        <style>
+            .cls-1{fill:#5569ff;opacity:.06}.cls-2{fill:#ffc107;opacity:.08}.cls-3{fill:#d14754;opacity:.096}.cls-4{fill:#42dbc9;opacity:.112}.cls-10,.cls-5,.cls-6{fill:#fff}.cls-5{stroke:#ffc107;stroke-width:6px}.cls-10,.cls-11,.cls-12,.cls-5,.cls-6,.cls-8,.cls-9{stroke-linejoin:round}.cls-11,.cls-12,.cls-5{opacity:.12}.cls-6{stroke:#42dbc9;stroke-width:4px;opacity:.124}.cls-7{fill:#f4f0f8;opacity:.715}.cls-11,.cls-12,.cls-14,.cls-8,.cls-9{fill:none}.cls-8{stroke:#347fc4;opacity:.16}.cls-10,.cls-11,.cls-12,.cls-8,.cls-9{stroke-width:2px}.cls-9{stroke:#d14754;opacity:.32}.cls-10{stroke:#ffb833;opacity:.24}.cls-11,.cls-12{stroke:#572b99;stroke-linecap:round}.cls-12{stroke:#48a9a6}.cls-13{stroke:none}
+        </style>
+    </defs>
+    <g id="graffiti_icons" data-name="graffiti icons" transform="translate(-409.527 -152)">
+        <circle id="Ellipse_1_copy_6" cx="8" cy="8" r="8" class="cls-1" data-name="Ellipse 1 copy 6" transform="translate(853.865 302)"/>
+        <circle id="Ellipse_1_copy_7" cx="11.5" cy="11.5" r="11.5" class="cls-2" data-name="Ellipse 1 copy 7" transform="translate(682.865 152)"/>
+        <path id="Ellipse_1_copy_4" d="M5 0a5 5 0 1 1-5 5 5 5 0 0 1 5-5z" class="cls-3" data-name="Ellipse 1 copy 4" transform="translate(813.504 163.305)"/>
+        <circle id="Ellipse_1_copy_3" cx="10" cy="10" r="10" class="cls-4" data-name="Ellipse 1 copy 3" transform="translate(928 206)"/>
+        <g id="Ellipse_1_copy_2" class="cls-5" data-name="Ellipse 1 copy 2" transform="translate(542 306)">
+            <circle cx="12" cy="12" r="12" class="cls-13"/>
+            <circle cx="12" cy="12" r="9" class="cls-14"/>
+        </g>
+        <g id="Ellipse_1_copy" class="cls-6" data-name="Ellipse 1 copy" transform="translate(428.199 253)">
+            <circle cx="13" cy="13" r="13" class="cls-13"/>
+            <circle cx="13" cy="13" r="11" class="cls-14"/>
+        </g>
+        <circle id="Ellipse_1_copy_7-2" cx="11" cy="11" r="11" class="cls-7" data-name="Ellipse 1 copy 7" transform="translate(511.865 164)"/>
+        <path id="Path_1042" d="M568.912 227.541l-.641 14.15 15.613-8.385z" class="cls-8" data-name="Path 1042" transform="translate(-21 4)"/>
+        <path id="Path_1043" d="M568.646 227.541l-.374 8.271 9.127-4.9z" class="cls-9" data-name="Path 1043" transform="translate(383.243 61.939)"/>
+        <g id="Ellipse_1_copy-2" class="cls-10" data-name="Ellipse 1 copy" transform="translate(829.199 226)">
+            <circle cx="13" cy="13" r="13" class="cls-13"/>
+            <circle cx="13" cy="13" r="12" class="cls-14"/>
+        </g>
+        <path id="Path_1044" d="M407.527 213.4l2.434-7.349h8.868l3.43-8.848 9.267.6" class="cls-11" data-name="Path 1044" transform="translate(3)"/>
+        <path id="Path_1045" d="M407.527 208l1.623-4.9h5.912l2.287-5.9 6.178.4" class="cls-12" data-name="Path 1045" transform="rotate(60 350.202 319.227)"/>
+    </g>
+</svg>
