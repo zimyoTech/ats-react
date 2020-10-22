@@ -1,29 +1,46 @@
 import {
+  USER_LOADED,
+  AUTH_ERROR,
   LOGIN_SUCCESS,
-  LOGIN_FAIL
-} from "../actions/types";
+  LOGIN_FAIL,
+  LOGOUT,
+} from '../actions/types';
 
-const user = JSON.parse(localStorage.getItem("user"));
-
-const initialState = user
-  ? { isLoggedIn: true, user }
-  : { isLoggedIn: false, user: null };
+const initialState = {
+  token: localStorage.getItem('token'),
+  isAuthenticated: null,
+  loading: true,
+  user: null,
+};
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case LOGIN_SUCCESS:
+    case USER_LOADED:
       return {
         ...state,
-        isLoggedIn: true,
-        user: payload.user,
+        isAuthenticated: true,
+        loading: false,
+        user: payload,
       };
-    case LOGIN_FAIL:
+    case LOGIN_SUCCESS:
+      localStorage.setItem('token', payload.token);
       return {
         ...state,
-        isLoggedIn: false,
-        user: null,
+        ...payload,
+        isAuthenticated: true,
+        loading: false,
+      };
+    case AUTH_ERROR:
+    case LOGIN_FAIL:
+    case LOGOUT:
+      localStorage.removeItem('token');
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
       };
     default:
       return state;

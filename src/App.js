@@ -1,34 +1,36 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Router, Switch, Route } from "react-router-dom";
+import React, { Fragment, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from './components/Login';
+import Routes from './components/routing/Routes';
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
+import { login } from './actions/auth';
 
-import Login from "./components/Login";
-import Profile from "./components/Profile";
+import './App.css';
+import setAuthToken from './utils/setAuthToken';
 
-import { clearMessage } from "./actions/message";
-
-import { history } from "./helpers/history";
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    history.listen((location) => {
-      dispatch(clearMessage()); // clear message when changing location
-    });
-  }, [dispatch]);
-
+    store.dispatch(login());
+  }, []);
 
   return (
-    <Router history={history}>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/profile" component={Profile} />
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Fragment>
+          <Switch>
+            <Route exact path='/' component={Login} />
+            <Route component={Routes} />
+          </Switch>
+        </Fragment>
+      </Router>
+    </Provider>
   );
 };
 

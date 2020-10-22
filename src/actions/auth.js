@@ -1,39 +1,58 @@
+import axios from 'axios';
 import {
+  USER_LOADED,
+  AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  SET_MESSAGE,
-} from "./types";
+  LOGOUT,
+  CLEAR_PROFILE,
+} from './types';
+import { setAlert } from './alert';
+import getToken from '../utils/getToken';
 
-import AuthService from '../services/auth.service';
+// Login User
+export const login = (username, password) => async (dispatch) => {
+  var body = {};
 
-export const login = (username, password) => (dispatch) => {
-  return AuthService.login(username, password).then(
-    (data) => {
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: { user: data },
-      });
+  const params = new URLSearchParams({
+    username: username,
+    password: password
+  }).toString();
 
-      return Promise.resolve();
-    },
-    (error) => {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+  let token = getToken();
+  console.log('token',token)
 
-      dispatch({
-        type: LOGIN_FAIL,
-      });
-
-      dispatch({
-        type: SET_MESSAGE,
-        payload: message,
-      });
-
-      return Promise.reject();
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token
     }
-  );
+  }
+
+  try {
+    const res = await axios.post(`/api/user/login?${params}`, body, config);
+
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data,
+    });
+
+  } catch (err) {
+    console.log(err);
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: LOGIN_FAIL,
+    });
+  }
+};
+
+// Logout // Clear Profile
+export const logout = () => (dispatch) => {
+  dispatch({ type: CLEAR_PROFILE });
+  dispatch({ type: LOGOUT });
 };
