@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 
 const Dashboard = ({
-  auth: { user }, 
-  loading
+  auth: { user, loading }
 }) => {
   return loading ? (
     <Spinner />
@@ -21,13 +20,11 @@ const Dashboard = ({
 };
 
 Dashboard.propTypes = {
-  auth: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
-  loading: state.auth.loading
+  auth: state.auth
 });
 
 export default connect(mapStateToProps)(Dashboard);
